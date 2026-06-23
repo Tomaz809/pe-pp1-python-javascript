@@ -1,1 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmacia</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 p-8">
+
+    <h1 class="text-3xl font-bold text-center text-blue-700 mb-8">
+        Sistema de Farmacia
+    </h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+
+        <div class="bg-white p-6 shadow">
+
+            <h2 class="text-xl font-bold mb-4">
+                Crear medicamento
+            </h2>
+
+            <form id="form-crear" class="space-y-3">
+
+                <input
+                    type="number"
+                    id="id"
+                    placeholder="ID"
+                    class="w-full border p-2 rounded"
+                    required>
+
+                <input
+                    type="text"
+                    id="nombre"
+                    placeholder="Nombre"
+                    class="w-full border p-2 rounded"
+                    required>
+
+                <input
+                    type="number"
+                    id="precio"
+                    placeholder="Precio"
+                    class="w-full border p-2 rounded"
+                    required>
+
+                <label class="flex gap-2">
+                    <input type="checkbox" id="receta">
+                    Requiere receta
+                </label>
+
+                <label class="flex gap-2">
+                    <input type="checkbox" id="activo" checked>
+                    Activo
+                </label>
+
+                <button
+                    type="submit"
+                    class="bg-green-600 text-white px-4 py-2 w-full">
+
+                    Crear medicamento
+
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <div class="bg-white p-6 rounded shadow">
+
+            <h2 class="text-xl font-bold mb-4">
+                Buscar medicamento
+            </h2>
+
+            <div class="flex gap-2 mb-4">
+
+                <input
+                    type="number"
+                    id="buscar-id"
+                    placeholder="ID"
+                    class="border p-2 w-full">
+
+                <button
+                    onclick="buscarPorId()"
+                    class="bg-yellow-500 text-white px-4 ">
+
+                    Buscar
+
+                </button>
+
+                <button
+                    onclick="borrarArticulo()"
+                    class="bg-red-500 text-white px-4 ">
+
+                    Borrar
+
+                </button>
+
+            </div>
+
+            <form id="form-editar" class="space-y-3">
+
+                <input
+                    type="number"
+                    id="edit-id"
+                    readonly
+                    class="w-full border p-2 rounded bg-gray-200">
+
+                <input
+                    type="text"
+                    id="edit-nombre"
+                    placeholder="Nombre"
+                    class="w-full border p-2 rounded">
+
+                <input
+                    type="number"
+                    id="edit-precio"
+                    placeholder="Precio"
+                    class="w-full border p-2 rounded">
+
+                <label class="flex gap-2">
+                    <input type="checkbox" id="edit-receta">
+                    Requiere receta
+                </label>
+
+                <label class="flex gap-2">
+                    <input type="checkbox" id="edit-activo">
+                    Activo
+                </label>
+
+                <button
+                    type="submit"
+                    class="bg-green-600 text-white px-4 py-2 w-full">
+
+                    Guardar cambios
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <div class="bg-white p-6 rounded shadow mt-8">
+
+        <div class="flex justify-between items-center mb-4">
+
+            <h2 class="text-xl font-bold">
+                Medicamentos
+            </h2>
+
+            <button
+                onclick="obtenerArticulos()"
+                class="bg-blue-500 text-white px-4 py-2 ">
+
+                Actualizar
+
+            </button>
+
+        </div>
+
+        <div id="lista-articulos">
+
+        </div>
+
+    </div>
+
+
+    <div class="bg-white p-6 rounded shadow mt-8">
+
+        <h2 class="text-xl font-bold mb-4">
+            Medicamentos Favoritos
+        </h2>
+
+        <div id="favoritos">
+
+        </div>
+
+    </div>
+
+    <script src="main.js"></script>
+
+</body>
+
+</html>
