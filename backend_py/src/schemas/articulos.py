@@ -12,10 +12,10 @@ class ArticuloFarmaciaSchema(BaseModel):
     nombre: StrCorto
     precio: FloatPrecioVenta
     activo: BoolDisponibilidad = True
-    requiere_receta: BoolReceta 
+    receta: BoolReceta 
 
 class ArticuloFarmaciaUpdateSchema(BaseModel):
     nombre: StrCorto
     precio: FloatPrecioVenta
     activo: BoolDisponibilidad = True
-    requiere_receta: BoolReceta
+    receta: BoolReceta
