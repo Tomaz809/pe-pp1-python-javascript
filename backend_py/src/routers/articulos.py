@@ -3,6 +3,7 @@ from fastapi import APIRouter, HTTPException, Path, Query
 from schemas.articulos import ArticuloFarmaciaSchema, ArticuloFarmaciaUpdateSchema
 
 articulos_routers = APIRouter()
+
 NOT_FOUND_RESPONSE = {
     404: {
         "description": "Response not found si no se encuentra el id",
@@ -44,10 +45,10 @@ async def get_articulos_farmacia_by_id(id: Annotated[int, Path(gt=0)]):
     raise HTTPException(status_code=404, detail="Articulo no encontrado")
 
 
-@articulos_routers.post("/", response_model=list[ArticuloFarmaciaSchema])
+@articulos_routers.post("/", response_model=ArticuloFarmaciaSchema)
 async def crear_articulo(articulo_nuevo: ArticuloFarmaciaSchema):
     articulos_farmacia.append(articulo_nuevo.model_dump())
-    return articulos_farmacia
+    return articulo_nuevo
 
 
 @articulos_routers.delete(
